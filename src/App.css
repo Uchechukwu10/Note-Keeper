@@ -14,7 +14,7 @@ div, section {
 
 /********** Navigation Bar**********/
 .navigation-bar {
-  background-color: #0D0D2B;
+  background-color: #6faaff;
 }
 .primary-nav a {
   color: #fff;
@@ -22,20 +22,9 @@ div, section {
   font-weight: 400;
   margin: 0 1rem;
 }
-.register-btn {
-  background-color: #3671E9;
-  border-radius: 2rem;
-}
-.login-btn::after {
-  content: '';
-  height: 24px;
-  width: 0px;
-  border: 1px solid #F2F2F2;
-  margin: 0 24px;
-}
 .mobile-popup {
   position: absolute;
-  background-color: #252540;
+  background-color: #6faaff;
   z-index: 10;
   height: 100vh;
   width: 100%;
@@ -52,248 +41,146 @@ div, section {
   top: 1.5rem;
 }
 
-/******* Banner *********/
-.banner {
-  background-color: #0D0D2B;
+/* Create Note */
+.create-form {
+  margin: 30px auto 20px auto;
+  background: #fff;
+  padding: 15px;
+  border-radius: 7px;
+  box-shadow: 0 1px 5px rgb(138, 137, 137);
+}
+
+.create-form input,
+.create-form textarea {
+  outline: none;
+  font-family: inherit;
+  resize: none;
+}
+.create-form button {
+  right: -16px;
+  bottom: -16px;
+  background: #6faaff;
   color: #fff;
-  z-index: -1;
-}
-.promo {
-  padding: 2px 8px 2px 0;
-  background: rgba(255, 255, 255, 0.1);
-}
-.promo span {
-  background-color: #fff;
-  color: #0D0D2B;
-}
-.try-btn {
-  background-color: #3671E9;
-  color: #FFFFFF;
-}
-.try-btn span svg, .btn svg{
-  background-color: #fff;
-  color: #3671E9;
-  font-size: 1rem;
-  width: 1.4rem;
-  height: 1.4rem;
+  border: none;
   border-radius: 50%;
-}
-.illustration {
-  height: 95%;
-  width: 100%;
-}
-.banner-details h1 {
-  line-height: 4rem;
-}
-.ruler1 {
-  width: 100px;
-  height: 1000.26px;
-  top: 150px;
-  left: 750px;
-  background: linear-gradient(180.09deg, rgba(255, 255, 255, 0) 0.49%, rgba(255, 255, 255, 0.04) 39.06%, rgba(255, 255, 255, 0) 99.92%);
-  transform: rotate(-120deg);
-  color: transparent;
-  z-index: 10 !important;
-}
-.ruler2 {
-  width: 100px;
-  height: 700px;
-  right: 300px;
-  top: 200px;
-  background: linear-gradient(180.09deg, rgba(255, 255, 255, 0) 0.49%, rgba(255, 255, 255, 0.04) 39.06%, rgba(255, 255, 255, 0) 99.92%);
-  transform: rotate(-120deg);
-}
-
-
-/********* Why Crappo ********/
-.figure-icon {
-  display: flex;
-  background-color: rgba(255, 255, 255, 0.1);
-  width: 70px !important;
-  min-width: 70px;
-  height: 70px;
-  font-size: 40px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-}
-.why-crappo {
-  background-color: #0D0D2B;
-  color: #FFFFFF;
-  z-index: 2;
-}
-.d-curve {
-  right: 0;
-  top: 100px;
-  width: 260px;
-}
-.u-curve {
-  right: 0;
-  bottom: 200px;
-  width: 240px;
-}
-.ruler3 {
-  background: linear-gradient(180.09deg, rgba(255, 255, 255, 0) 0.49%, rgba(255, 255, 255, 0.04) 39.06%, rgba(255, 255, 255, 0) 99.92%);
-  width: 100px;
-  height: 700px;
-  left: 0;
-  top: 300px;
-  transform: rotate(-120deg);
-}
-
-/*********** Calculate ***********/
-.calculate-title {
-  background-color: #0D0D2B;
-  color: #FFFFFF;
-}
-.revenue {
-  background-color: #FFFFFF;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  margin-bottom: 50px;
-  margin: 0 auto;
-  top: 0;
-}
-.trader {
-  background-color: #FFFFFF;
-}
-.hash-form {
-  background-color: #FBFCFE;
-  bottom: 0;
-}
-.hash-form input, .hash-form select{
-  border-width: 0 0 1.2px 0;
-  border-color: #E0E0E0;
-  height: 50px;
-  margin: 10px 20px;
-  background-color: #FBFCFE;
-  padding: 0 10px;
-  color: #0D0D2B;
-}
-input:focus, select:focus {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
   outline: none;
 }
-input::placeholder {
-  color: #0D0D2B;
+
+/* Notes */
+.note {
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 2px 5px #ccc;
+  flex-basis: 28%;
 }
-.blue-head {
-  color: #3671E9;
+.note p {
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
-.bitcoin, .ethereum, .litecoin {
-  border-radius: 12px;
-  color: #0D0D2B;
-} 
-.ethereum {
-  animation-delay: 0.5s;
+.note button {
+  color: #6faaff;
+  border: none;
+  cursor: pointer;
+  outline: none;
 }
-.litecoin {
-  animation-delay: 1s;
+.pin-box {
+  top: 10px;
+  right: 10px;
 }
-.arrow {
+
+.pin-box em{
+  position: relative;
+  bottom: 5px;
+}
+.delete-btn {
+  border-radius: 5px;
+  float: right;
+  bottom: 2px;
+  right: 3px;
+}
+.custom-ui {
   background-color: #fff;
-  color: #3671E9;
-  border-radius: 50%;
-  border: 2px solid rgba(43, 7, 110, 0.2);
-}
-.arrow svg{
-  color: #3671E9;
-  font-size: 1rem;
-  width: 1.4rem;
-  height: 1.4rem;
-  border-radius: 50%;
-}
-.crypto-card img {
-  width: 50px;
-}
-.btn {
-  background-color: #3671E9;;
-}
-.start-mining {
-  display: none;
-}
-.crypto-card:hover {
-  background: #2B076E;
-  color: #FFFFFF;
-}
-.crypto-card:hover > .start-mining{
-  display: block;
-}
-.crypto-card:hover > .arrow{
-  display: none;
-}
-.currency-text {
-  height: 120px;
-}
-
-/*********** Features ************/
-.features {
-  background-color: #2B076E;
-  color: #FFFFFF;
-}
-.mine-form input, .mine-form select{
-  border-width: 0 0 1.2px 0;
-  border-color: #E0E0E0;
-  height: 50px;
-  margin: 10px 20px;
-  padding: 0 10px;
-  color: #FFFFFF;
-  background-color: transparent;
-}
-.mine-form input::placeholder {
-  color: #FFFFFF;
-}
-.mine-btn {
-  background-color: #3671E9;
-  border-radius: 12px;
-  color: #FFFFFF;
-  overflow: hidden;
-} 
-.subscribe-btn {
-  background-color: #FFFFFF;
-  color: #0D0D2B;
-}
-.start-mine {
-  background: linear-gradient(180deg, #2B076E 0%, #0D0D2B 100%);
-}
-.circle1 {
-  transform: rotate(-150deg);
-  top: -100px;
-  left: 100px;
-}
-.circle2 {
-  bottom: 400px;
-  right: -70px;
-  transform: rotate();
-}
-.eth {
-  top: -10px;
-  left: 50px;
-}
-.btc {
-  bottom: 0;
-  right: 25px;
-}
-
-/************* Footer ***************/
-.footer {
-  background-color: #0D0D2B;
-  color: #FFFFFF;
-}
-.social-media p {
-  padding: 4px 0;
-}
-.visa-bw, .master-bw, .bitcoin-bw {
-  background: rgb(224, 224, 224, 0.05);
+  padding: 30px 20px;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
 }
-.accepted-payment img {
-  width: 30px;
+.custom-ui span {
+  display: flex;
+  justify-content: right;
+  margin-bottom: 10px;
+  color: #666362;
+  cursor: pointer;
+}
+.custom-ui h1 {
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+.custom-ui p {
+  font-weight: 400;
+  font-size: 1rem;
+  color: #666362;
+  margin: 10px 0;
+}
+.custom-ui .action-btns {
+  display: flex;
+  justify-content: right;
+  gap: 15px;
+  margin: 15px 0;
+}
+.danger-btn {
+  background-color: #ff0e0e;
+  color: #fff;
+  border-radius: 5px;
+  min-width: 100px;
+  padding: 7px 15px;
+}
+.neutral-btn {
+  background-color: #fff;
+  color: #666362;
+  border-radius: 5px;
+  min-width: 100px;
+  border: 1px solid #666362;
+  padding: 7px 15px;
 }
 
-@media only screen and (max-width: 1024px){
-  .ruler1, .ruler2, .ruler3, .u-curve, .d-curve  {
-    display: none;
-  }
-  .bitcoin, .ethereum, .litecoin {
-    animation-delay: 0s;
-  } 
+
+/* Edit Note */
+.note-editor {
+  border-radius: 8px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+.left-btn, .right-btn {
+  border-radius: 10px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+.right-btn {
+  background-color: #6faaff;
+}
+/* Pagination */
+.pages div {
+  cursor: pointer;
+}
+.unclick {
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Special Effects */
+.blurred {
+  filter: blur(2.5px);
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+  background-color: black;
+  opacity: 0.1;
+}
+
