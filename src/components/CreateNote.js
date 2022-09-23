@@ -14,6 +14,7 @@ const CreateNote = (props) => {
       progress: undefined,
     });
   const { newNote, setNewNote, editing, setEditing } = useContext(NoteContext);
+  const [category, setCategory] = useState('personal');
 
   const handleChange = (event) => {
     const {name, value} = event.target;
@@ -42,9 +43,20 @@ const CreateNote = (props) => {
           pauseOnHover
           />
         <div className='create-note'>
-            <form className='create-form w-5/12 relative' onSubmit={submitNote}>
+            <form className='create-form w-10/12 lg:w-5/12 relative' onSubmit={submitNote}>
                 <input name="title" placeholder="Title" value={newNote.title} className='w-full border-none p-1 text-xl' onChange={handleChange}/>
                 <textarea name="content" placeholder="Take a note..." value={newNote.content} rows="3" className='w-full border-none p-1 text-md' onChange={handleChange}/>
+                <select
+                    id="add-select-category"
+                    className='add-category-select'
+                    name='category'
+                    onChange={handleChange}
+                    value={newNote.category}
+                  >
+                    <option value="personal">Personal</option>
+                    <option value="work">Work</option>
+                    <option value="school">School</option>
+                  </select>
                 <button className='w-16 h-16 absolute' type='submit'>Add</button>
             </form>
         </div>

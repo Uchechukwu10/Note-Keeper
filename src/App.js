@@ -30,6 +30,7 @@ function App() {
     title: "",
     content: "",
     pinned: false,
+    category: 'personal'
   });
   const [editing, setEditing] = useState(false);
   const [activeNote, setActiveNote] = useState({});
@@ -40,13 +41,14 @@ function App() {
   const addNote = async () => {
     try {
       console.log("Adding a new note");
-      setAdded(newNote);
       await addDoc(notesCollectionRef, newNote);
+      setAdded(newNote);
       notifySuccess('Note added successfully');
       setNewNote({
         title: "",
         content: "",
         pinned: false,
+        category: 'personal'
       });
     }
     catch(err) {
@@ -59,6 +61,7 @@ function App() {
     try {
       const noteDoc = doc(db, "notes", id);
       await deleteDoc(noteDoc);
+      setAdded({note: id});
       notifySuccess('Note deleted successfully');
     }
     catch(err) {
@@ -72,6 +75,7 @@ function App() {
       const newFields = {title: activeNote.title, content: activeNote.content};
       const noteDoc = doc(db, "notes", id);
       await updateDoc(noteDoc, newFields);
+      setAdded(newFields);
       notifySuccess('Note updated successfully');
     }
     catch(err) {
@@ -82,9 +86,9 @@ function App() {
 
   const updatePin = async (pin, id) => {
     const newFields = {pinned: pin};
-    setAdded(newFields);
     const userDoc = doc(db, "notes", id);
     await updateDoc(userDoc, newFields);
+    setAdded(newFields);
   }
 
   useEffect(() => {
@@ -99,7 +103,7 @@ function App() {
       }     
     };
     getUsers();
-  }, []);
+  }, [added]);
 
   useEffect(() => {
     setTotalPages(Math.ceil(allNotes.length/6));

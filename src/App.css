@@ -67,6 +67,13 @@ div, section {
   cursor: pointer;
   outline: none;
 }
+.add-category-select {
+  border: none;
+  outline: none;
+  width: 100px;
+  color: #666362;
+  font-size: 0.92rem;
+}
 
 /* Notes */
 .note {
@@ -99,6 +106,18 @@ div, section {
   float: right;
   bottom: 2px;
   right: 3px;
+}
+.category-select {
+  border: none;
+  outline: none;
+  width: 100px;
+  font-style: italic;
+  color: #666362;
+  appearance: none;
+}
+.category {
+  bottom: 2px;
+  left: 3px;
 }
 .custom-ui {
   background-color: #fff;
@@ -155,6 +174,13 @@ div, section {
   transform: translate(-50%, -50%);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+@media only screen and (max-width: 600px) {
+  .note-editor {
+    top: 50%;
+    left: 30%;
+    transform: translate(-20%, -50%);
+  }
+}
 .left-btn, .right-btn {
   border-radius: 10px;
   color: #fff;
@@ -183,4 +209,5 @@ div, section {
   background-color: black;
   opacity: 0.1;
 }
+
 

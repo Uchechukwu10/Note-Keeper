@@ -19,7 +19,7 @@ const NavBar = () => {
               {/* Secondary Navbar items */}
               <div className="hidden lg:flex items-center ml-14">
                 <a href="" className="py-2 px-2 text-2xl text-white login-btn">
-                  Login
+                  Categories
                 </a>
               </div>
             </div>
@@ -54,13 +54,26 @@ const NavBar = () => {
               <div className="close-btn" onClick={() => setMenu(false)}><MdClose /></div>
               <div >
                 <div className="primary-link">
-                  <a
-                    href="#"
-                    className="block text-xl px-2 py-4 text-white text-center"
-                  >
+                  <a href="/" className="block text-xl px-2 py-4 text-white text-center">
                     Home
                   </a>
                 </div>
+                <div className="primary-link">
+                  <a href="#" className="block text-xl px-2 py-4 text-white text-center">
+                    Personal
+                  </a>
+                </div>
+                <div className="primary-link">
+                  <a href="#" className="block text-xl px-2 py-4 text-white text-center">
+                    Work
+                  </a>
+                </div>
+                <div className="primary-link">
+                  <a href="#" className="block text-xl px-2 py-4 text-white text-center">
+                    School
+                  </a>
+                </div>
+                  
               </div>
             </div>
           </div>
