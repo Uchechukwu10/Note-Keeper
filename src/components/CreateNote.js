@@ -45,7 +45,8 @@ const CreateNote = (props) => {
         <div className='create-note'>
             <form className='create-form w-10/12 lg:w-5/12 relative' onSubmit={submitNote}>
                 <input name="title" placeholder="Title" value={newNote.title} className='w-full border-none p-1 text-xl' onChange={handleChange}/>
-                <textarea name="content" placeholder="Take a note..." value={newNote.content} rows="3" className='w-full border-none p-1 text-md' onChange={handleChange}/>
+                <textarea name="content" placeholder="Take a note..." value={newNote.content} rows="3" className='hidden lg:flex w-full border-none p-1 text-md' onChange={handleChange}/>
+                <textarea name="content" placeholder="Take a note..." value={newNote.content} rows="2" className='flex lg:hidden w-full border-none p-1 text-md' onChange={handleChange}/>
                 <select
                     id="add-select-category"
                     className='add-category-select'

@@ -91,14 +91,14 @@ const Notes = (props) => {
         <div className={editing ? '' : 'invisible'}>
             <EditNote handleUpdate={handleUpdate}/>
         </div>
-        <div className={editing ? 'notes flex flex-col lg:flex-row flex-wrap blurred w-full mx-8 lg:mx-16' : 'notes flex flex-col lg:flex-row flex-wrap mx-8 lg:mx-16'}>
+        <div className={editing ? 'notes flex flex-col lg:flex-row flex-wrap blurred w-full mx-4 lg:mx-16' : 'notes flex flex-col lg:flex-row flex-wrap mx-4 lg:mx-16'}>
             { 
                 props.notes.slice((currentPage * 6) - 6,currentPage * 6).map((note) => {
                 return (
-                    <div className='note py-3 px-3 mx-6 my-3 lg:my-8 relative'>
+                    <div className='note py-3 px-3 mx-4 my-3 lg:my-8 relative'>
                         <div onClick={() => {editNote(note)}} className='mb-7'>
-                            <h1 className='font-bold text-2xl'>{note.title}</h1>
-                            <p className='text-xl'>{note.content.substring(0,50) + "..."}</p>
+                            <h1 className='font-bold text-xl lg:text-2xl'>{note.title}</h1>
+                            <p className='text-md'>{note.content.substring(0,50) + "..."}</p>
                         </div>
                         <div className='flex justify-between'>
                           <div className='category absolute'>

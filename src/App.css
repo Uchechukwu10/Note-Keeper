@@ -117,6 +117,8 @@ div, section {
   font-style: italic;
   color: #666362;
   appearance: none;
+  background-color: #fff;
+  font-size: 0.9rem;
 }
 .category {
   bottom: 2px;

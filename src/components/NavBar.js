@@ -26,6 +26,7 @@ const NavBar = (props) => {
       return;
     }
     setOpen(false);
+    setMenu(false);
     props.displayCategory(cat);
   };
 
@@ -45,14 +46,14 @@ const NavBar = (props) => {
             <div>
               {/* Website Logo */}
               <a href="#" className="flex items-center py-4 px-2">
-                <BiNotepad color='white' fontSize='2.2rem'/>
-                <h1 className='text-white font-bold text-4xl ml-1'>Note Keeper</h1>
+                <BiNotepad color='white' fontSize='2.1rem'/>
+                <h1 className='text-white font-bold text-3xl lg:text-4xl ml-1'>Note Keeper</h1>
               </a>
             </div>
             <div className="flex space-x-7">
               {/* Secondary Navbar items */}
               <Stack direction="row" spacing={2}>
-                <div>
+                <div className="hidden lg:flex items-center ml-14">
                   <div
                     ref={anchorRef}
                     id="composition-button"
@@ -129,25 +130,25 @@ const NavBar = (props) => {
             >
               <div className="close-btn" onClick={() => setMenu(false)}><MdClose /></div>
               <div >
-                <div className="primary-link">
-                  <a href="/" className="block text-xl px-2 py-4 text-white text-center">
+                <div className="primary-link" onClick={(event) => handleClick(event, 'all')}>
+                  <span className="block text-xl px-2 py-4 text-white text-center">
                     Home
-                  </a>
+                  </span>
                 </div>
-                <div className="primary-link">
-                  <a href="#" className="block text-xl px-2 py-4 text-white text-center">
+                <div className="primary-link" onClick={(event) => handleClick(event, 'personal')}>
+                  <span className="block text-xl px-2 py-4 text-white text-center">
                     Personal
-                  </a>
+                  </span>
                 </div>
-                <div className="primary-link">
-                  <a href="#" className="block text-xl px-2 py-4 text-white text-center">
+                <div className="primary-link" onClick={(event) => handleClick(event, 'work')}>
+                  <span className="block text-xl px-2 py-4 text-white text-center">
                     Work
-                  </a>
+                  </span>
                 </div>
-                <div className="primary-link">
-                  <a href="#" className="block text-xl px-2 py-4 text-white text-center">
+                <div className="primary-link" onClick={(event) => handleClick(event, 'school')}>
+                  <span className="block text-xl px-2 py-4 text-white text-center">
                     School
-                  </a>
+                  </span>
                 </div>
                   
               </div>
