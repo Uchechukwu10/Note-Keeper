@@ -132,7 +132,6 @@ function App() {
   }, [added]);
 
   useEffect(() => {
-    setTotalPages(Math.ceil(displayNotes.length/6));
     const pinnedNotes = [];
     const otherNotes = [];
     allNotes.map((note) => {
@@ -140,6 +139,10 @@ function App() {
     })
     setNotes([...pinnedNotes, ...otherNotes]);
   }, [allNotes]);
+
+  useEffect(() => {
+    setTotalPages(Math.ceil(displayNotes.length/6));
+  }, [displayNotes]);
 
   useEffect(() => {
     setDisplayNotes(notes);
