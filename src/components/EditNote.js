@@ -24,7 +24,7 @@ const EditNote = (props) => {
                 <textarea name="content" placeholder="Take a note..." rows="9" className='w-full border-none p-5 text-xl' value={activeNote.content} onChange={handleChange}/>
                 <div className='flex justify-between'>
                     <div className='flex items-center justify-center w-16 h-8 lg:h-16 left-btn bg-red-500' onClick={cancelEditing}>Cancel</div>
-                    <div className='flex items-center justify-center w-16 h-8 lg:h-16 right-btn' onClick={() => props.handleUpdate()}>Update</div>
+                    <div className='flex items-center justify-center w-16 h-8 lg:h-16 right-btn' onClick={() => props.handleUpdate()}>Done</div>
                 </div>
             </form>
         </div>

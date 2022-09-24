@@ -58,7 +58,7 @@ const CreateNote = (props) => {
                     <option value="work">Work</option>
                     <option value="school">School</option>
                   </select>
-                <button className='w-16 h-16 absolute' type='submit'>Add</button>
+                <button className='w-16 h-16 absolute' type='submit'>Create</button>
             </form>
         </div>
     </div>

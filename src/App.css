@@ -1,12 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Rubik:wght@300;400;500;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Ubuntu:wght@400;700&display=swap');
 
+html {
+  height: 100%;
+}
 body {
   padding: 0;
   margin: 0;
   font-family: 'Rubik', sans-serif;
+  min-height: 100%;
+}
+#root {
+  min-height: 100vh;
 }
 .App {
   overflow: hidden;
+  min-height: 100vh;
 }
 div, section {
   overflow: hidden;
@@ -26,7 +34,7 @@ div, section {
   position: absolute;
   background-color: #6faaff;
   z-index: 10;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   left: 0;
   top: 0;

@@ -44,7 +44,7 @@ function App() {
       console.log("Adding a new note");
       await addDoc(notesCollectionRef, newNote);
       setAdded(newNote);
-      notifySuccess('Note added successfully');
+      notifySuccess('Note created successfully');
       setNewNote({
         title: "",
         content: "",
