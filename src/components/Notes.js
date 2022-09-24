@@ -68,8 +68,9 @@ const Notes = (props) => {
         setCurrentPage(direction === 'back' ? currentPage - 1 : currentPage + 1);
     }
     const handleChange = (event, id) => {
-      props.categoryUpdate(id);
-      console.log(event.target.value);
+      let category = event.target.value;
+      props.categoryUpdate(id, category);
+      console.log(category);
       console.log(id);
     }
     

@@ -24,6 +24,7 @@ function App() {
     closeOnClick: true,
   });
   const [added, setAdded] = useState({});
+  const [displayNotes, setDisplayNotes] = useState([]);
   const [notes, setNotes] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
   const [newNote, setNewNote] = useState({
@@ -86,9 +87,34 @@ function App() {
 
   const updatePin = async (pin, id) => {
     const newFields = {pinned: pin};
-    const userDoc = doc(db, "notes", id);
-    await updateDoc(userDoc, newFields);
+    const noteDoc = doc(db, "notes", id);
+    await updateDoc(noteDoc, newFields);
     setAdded(newFields);
+  }
+
+  const displayCategory = (cat) => {
+    if (cat == 'all') {
+      setDisplayNotes(notes);
+    } else {
+      let categoryNotes = [];
+      for (let i=0; i < notes.length; i++) {
+        notes[i].category == cat && categoryNotes.push(notes[i])
+      }
+      setDisplayNotes(categoryNotes);
+    }
+  }
+
+  const categoryUpdate = async (id, cat) => {
+    try {
+      const newFields = {category: cat};
+      const noteDoc = doc(db, "notes", id);
+      await updateDoc(noteDoc, newFields);
+      setAdded(newFields);
+      notifySuccess(`Category updated to ${cat}`);
+    } catch (error) {
+      console.log(error);
+      notifyError('Unable to update category');
+    }
   }
 
   useEffect(() => {
@@ -106,7 +132,7 @@ function App() {
   }, [added]);
 
   useEffect(() => {
-    setTotalPages(Math.ceil(allNotes.length/6));
+    setTotalPages(Math.ceil(displayNotes.length/6));
     const pinnedNotes = [];
     const otherNotes = [];
     allNotes.map((note) => {
@@ -115,9 +141,13 @@ function App() {
     setNotes([...pinnedNotes, ...otherNotes]);
   }, [allNotes]);
 
+  useEffect(() => {
+    setDisplayNotes(notes);
+  }, [notes]);
+
   return (
     <div className="App relative">
-      <NavBar />
+      <NavBar displayCategory={displayCategory}/>
       <NoteContext.Provider value={{ notes, setNotes, newNote, setNewNote, editing, setEditing, activeNote, setActiveNote, totalPages, setTotalPages }}>
         <ToastContainer
             hideProgressBar
@@ -127,7 +157,7 @@ function App() {
             pauseOnFocusLoss
           />
         <CreateNote addNote={addNote}/>
-        <Notes notes={notes} updateNote={updateNote} updatePin={updatePin} deleteNote={deleteNote}/>
+        <Notes notes={displayNotes} updateNote={updateNote} updatePin={updatePin} deleteNote={deleteNote} categoryUpdate={categoryUpdate}/>
       </NoteContext.Provider>
     </div>
   );

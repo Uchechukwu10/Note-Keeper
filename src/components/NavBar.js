@@ -1,27 +1,103 @@
-import { React, useState } from "react";
+import { React, useState, useRef, useEffect } from "react";
 import { MdClose } from "react-icons/md";
+import { BiNotepad } from 'react-icons/bi';
+import { RiArrowDropDownLine } from 'react-icons/ri';
+import Button from '@mui/material/Button';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import Grow from '@mui/material/Grow';
+import Paper from '@mui/material/Paper';
+import Popper from '@mui/material/Popper';
+import MenuItem from '@mui/material/MenuItem';
+import MenuList from '@mui/material/MenuList';
+import Stack from '@mui/material/Stack';
+import Divider from '@mui/material/Divider';
 
-const NavBar = () => {
+const NavBar = (props) => {
   const [menu, setMenu] = useState(false);
+  const [open, setOpen] = useState(false);
+  const anchorRef = useRef(null);
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+
+  const handleClick = (event, cat) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+    setOpen(false);
+    props.displayCategory(cat);
+  };
+
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+    setOpen(false);
+  }
+
 
   return (
     <section className="navigation-bar md:px-9 lg:px-9 xl:px-16">
       <nav className="">
-        <div className="mx-auto px-4 md:py-3 lg:py-5">
+        <div className="mx-auto px-4 md:py-3 lg:py-4">
           <div className="flex justify-between">
             <div>
               {/* Website Logo */}
               <a href="#" className="flex items-center py-4 px-2">
-                <h1 className='text-white font-bold text-4xl'>Note Keeper</h1>
+                <BiNotepad color='white' fontSize='2.2rem'/>
+                <h1 className='text-white font-bold text-4xl ml-1'>Note Keeper</h1>
               </a>
             </div>
             <div className="flex space-x-7">
               {/* Secondary Navbar items */}
-              <div className="hidden lg:flex items-center ml-14">
-                <a href="" className="py-2 px-2 text-2xl text-white login-btn">
-                  Categories
-                </a>
-              </div>
+              <Stack direction="row" spacing={2}>
+                <div>
+                  <div
+                    ref={anchorRef}
+                    id="composition-button"
+                    onClick={handleToggle}
+                    className="text-white py-5 text-xl cursor-pointer"
+                  >
+                    Categories
+                    <RiArrowDropDownLine color='white' fontSize='2rem' style={{ display: "inline" }}/>
+                  </div>
+                  <Popper
+                    open={open}
+                    anchorEl={anchorRef.current}
+                    role={undefined}
+                    placement="bottom-start"
+                    transition
+                    disablePortal
+                  >
+                    {({ TransitionProps, placement }) => (
+                      <Grow
+                        {...TransitionProps}
+                        style={{
+                          transformOrigin:
+                            placement === 'bottom-start' ? 'left top' : 'left bottom',
+                        }}
+                      >
+                        <Paper className='category-paper'>
+                          <ClickAwayListener onClickAway={handleClose}>
+                            <MenuList
+                              autoFocusItem={open}
+                              id="composition-menu"
+                              aria-labelledby="composition-button"
+                            >
+                              <MenuItem name='personal' onClick={(event) => handleClick(event, 'personal')}>Personal</MenuItem>
+                              <MenuItem name='work'onClick={(event) => handleClick(event, 'work')}>Work</MenuItem>
+                              <MenuItem name='school' onClick={(event) => handleClick(event, 'school')}>School</MenuItem>
+                              <Divider />
+                              <MenuItem name='all' onClick={(event) => handleClick(event, 'all')}>All</MenuItem>
+                            </MenuList>
+                          </ClickAwayListener>
+                        </Paper>
+                      </Grow>
+                    )}
+                  </Popper>
+                </div>
+              </Stack>
             </div>
             {/* Mobile menu button  */}
             <div
